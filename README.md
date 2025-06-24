@@ -1,5 +1,5 @@
 ```bash
-bash <(curl -s https://raw.githubusercontent.com/scattlights/Tools/main/run.sh)
+bash <(curl -s https://raw.githubusercontent.com/scattlights/tools/main/run.sh)
 ```
 
 ---
