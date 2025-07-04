@@ -1,4 +1,11 @@
 #!/bin/bash
+clear
+echo "安装Nginx"
+echo
+read -rp "确定要继续吗？(y/n): " confirm
+if [[ "$confirm" != "y" ]]; then
+    exit 0
+fi
 
 if ! grep -Ei 'ubuntu|debian' /etc/os-release > /dev/null; then
   echo "❌ 当前系统不是 Ubuntu 或 Debian，已退出。"
