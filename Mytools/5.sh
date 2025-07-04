@@ -1,6 +1,11 @@
 #!/bin/bash
 
-echo "开始清理日志和缓存..."
+echo "清理日志和缓存"
+
+read -rp "确定要继续吗？(y/n): " confirm
+if [[ "$confirm" != "y" ]]; then
+    exit 0
+fi
 
 LOG_DIRS=(
   "/var/log"
