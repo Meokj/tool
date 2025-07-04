@@ -3,6 +3,11 @@ clear
 echo "UFW 防火墙端口管理器"
 echo
 
+if ! command -v ufw &> /dev/null; then
+    echo "未检测到 ufw，请先安装"
+    exit 1
+fi
+
 read -rp "确定要继续吗？(y/n): " confirm
 if [[ "$confirm" != "y" ]]; then
     exit 0
