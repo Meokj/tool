@@ -1,6 +1,11 @@
 #!/bin/bash
 clear
-
+echo "查看或修改当前时区"
+echo
+read -rp "确定要继续吗？(y/n): " confirm
+if [[ "$confirm" != "y" ]]; then
+    exit 0
+fi
 
 common_timezones=(
   "Asia/Shanghai"
