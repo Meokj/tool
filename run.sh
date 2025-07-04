@@ -18,6 +18,11 @@ while true; do
     continue
   fi
 
+  if [[ "$num" == "0" ]]; then
+    echo "退出脚本"
+    exit 0
+  fi
+
   url="https://raw.githubusercontent.com/scattlights/Tools/main/Mytools/${num}.sh"
   
   if curl --silent --head --fail "$url" > /dev/null; then
