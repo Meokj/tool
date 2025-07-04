@@ -1,4 +1,6 @@
 #!/bin/bash
+clear
+
 
 common_timezones=(
   "Asia/Shanghai"
