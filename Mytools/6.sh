@@ -22,16 +22,16 @@ current_timezone=$(timedatectl | grep "Time zone" | awk '{print $3}')
 echo "当前时区: $current_timezone"
 echo
 
-echo "请选择一个新的时区："
-for i in "${!common_timezones[@]}"; do
-    printf "%2d) %s\n" "$i" "${common_timezones[$i]}"
-done
-
 read -p "是否需要修改时区？(y/n): " confirm
 if [[ "$confirm" != "y" && "$confirm" != "Y" ]]; then
     echo "操作已取消，未修改时区。"
     exit 0
 fi
+
+echo "请选择一个新的时区："
+for i in "${!common_timezones[@]}"; do
+    printf "%2d) %s\n" "$i" "${common_timezones[$i]}"
+done
 
 echo
 read -p "请输入序号 (0 ~ $((${#common_timezones[@]} - 1))): " index
