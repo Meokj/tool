@@ -1,5 +1,4 @@
 #!/bin/bash
-clear
 while true; do
   echo
   read -rp "请输入要执行的脚本编号（0退出）： " num
