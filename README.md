@@ -13,3 +13,6 @@ bash <(curl -s https://raw.githubusercontent.com/scattlights/tools/main/run.sh)
 
 ---
 4.查看或添加需要开放的UFW端口
+
+---
+5.清理日志和缓存
