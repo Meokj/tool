@@ -16,3 +16,6 @@ bash <(curl -s https://raw.githubusercontent.com/scattlights/tools/main/run.sh)
 
 ---
 5.清理日志和缓存
+
+---
+6.查看或修改当前时区
