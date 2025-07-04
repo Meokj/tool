@@ -2,6 +2,12 @@
 clear
 echo "卸载Nginx"
 echo
+
+if ! command -v nginx &> /dev/null; then
+  echo "ℹ️ 未检测到已安装的 Nginx"
+  exit 0
+fi
+
 read -rp "确定要继续吗？(y/n): " confirm
 if [[ "$confirm" != "y" ]]; then
     exit 0
