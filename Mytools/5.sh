@@ -1,7 +1,7 @@
 #!/bin/bash
-
+clear
 echo "清理日志和缓存"
-
+echo
 read -rp "确定要继续吗？(y/n): " confirm
 if [[ "$confirm" != "y" ]]; then
     exit 0
