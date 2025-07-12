@@ -19,6 +19,11 @@ if ! command -v iptables >/dev/null 2>&1; then
   sudo apt install -y iptables iptables-persistent
 fi
 
+sudo iptables -F
+sudo iptables -X
+sudo ip6tables -F
+sudo ip6tables -X
+
 echo "===================================="
 echo "当前 IPv4 iptables 规则："
 sudo iptables -L INPUT -v -n --line-numbers
