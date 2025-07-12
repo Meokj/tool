@@ -27,9 +27,10 @@ sudo ip6tables -X
 echo "===================================="
 echo "当前 IPv4 iptables 规则："
 sudo iptables -L INPUT -v -n --line-numbers
-echo
+echo "===================================="
 echo "当前 IPv6 ip6tables 规则："
 sudo ip6tables -L INPUT -v -n --line-numbers
+echo "===================================="
 
 
 read -rp "请输入操作类型（add 表示添加规则，del 表示删除规则）： " ACTION
@@ -101,7 +102,7 @@ sudo netfilter-persistent save
 echo "===================================="
 echo "当前 IPv4 iptables 规则："
 sudo iptables -L INPUT -v -n --line-numbers
-echo
+echo "===================================="
 echo "当前 IPv6 ip6tables 规则："
 sudo ip6tables -L INPUT -v -n --line-numbers
 echo "===================================="
