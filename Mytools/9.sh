@@ -17,12 +17,11 @@ if ! command -v iptables >/dev/null 2>&1; then
   echo iptables-persistent iptables-persistent/autosave_v6 boolean false | sudo debconf-set-selections
   sudo apt update
   sudo apt install -y iptables iptables-persistent
+  sudo iptables -F
+  sudo iptables -X
+  sudo ip6tables -F
+  sudo ip6tables -X
 fi
-
-sudo iptables -F
-sudo iptables -X
-sudo ip6tables -F
-sudo ip6tables -X
 
 echo "===================================="
 echo "当前 IPv4 iptables 规则："
@@ -31,7 +30,6 @@ echo "===================================="
 echo "当前 IPv6 ip6tables 规则："
 sudo ip6tables -L INPUT -v -n --line-numbers
 echo "===================================="
-
 
 read -rp "请输入操作类型（add 表示添加规则，del 表示删除规则）： " ACTION
 if [[ "$ACTION" != "add" && "$ACTION" != "del" ]]; then
