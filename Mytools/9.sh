@@ -1,6 +1,6 @@
 #!/bin/bash
-
-set -e
+echo "安装iptables"
+echo
 
 if ! grep -Ei 'debian|ubuntu' /etc/os-release > /dev/null 2>&1; then
   echo "本脚本只支持 Debian 和 Ubuntu 系统！"
