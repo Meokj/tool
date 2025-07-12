@@ -1,10 +1,14 @@
 #!/bin/bash
-echo "安装iptables"
+echo "安装或配置iptables"
 echo
+read -rp "确定要继续吗？(y/n): " confirm
+if [[ "$confirm" != "y" ]]; then
+    exit 0
+fi
 
 if ! grep -Ei 'debian|ubuntu' /etc/os-release > /dev/null 2>&1; then
   echo "本脚本只支持 Debian 和 Ubuntu 系统！"
-  exit 1
+  exit 0
 fi
 
 if ! command -v iptables >/dev/null 2>&1; then
@@ -19,13 +23,13 @@ if ! command -v ip6tables >/dev/null 2>&1; then
   sudo apt install -y iptables iptables-persistent
 fi
 
-echo
+echo "===================================="
 echo "当前 IPv4 iptables 规则："
 sudo iptables -L INPUT -v -n --line-numbers
 echo
 echo "当前 IPv6 ip6tables 规则："
 sudo ip6tables -L INPUT -v -n --line-numbers
-echo
+
 
 read -rp "请输入操作类型（add 表示添加规则，del 表示删除规则）： " ACTION
 if [[ "$ACTION" != "add" && "$ACTION" != "del" ]]; then
@@ -93,9 +97,10 @@ fi
 
 sudo netfilter-persistent save
 
-echo
-echo "操作完成！当前 IPv4 iptables 规则："
+echo "===================================="
+echo "当前 IPv4 iptables 规则："
 sudo iptables -L INPUT -v -n --line-numbers
 echo
 echo "当前 IPv6 ip6tables 规则："
 sudo ip6tables -L INPUT -v -n --line-numbers
+echo "===================================="
