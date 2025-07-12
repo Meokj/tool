@@ -13,12 +13,8 @@ fi
 
 if ! command -v iptables >/dev/null 2>&1; then
   echo "未检测到 iptables，正在安装..."
-  sudo apt update
-  sudo apt install -y iptables iptables-persistent
-fi
-
-if ! command -v ip6tables >/dev/null 2>&1; then
-  echo "未检测到 ip6tables，正在安装..."
+  echo iptables-persistent iptables-persistent/autosave_v4 boolean false | sudo debconf-set-selections
+  echo iptables-persistent iptables-persistent/autosave_v6 boolean false | sudo debconf-set-selections
   sudo apt update
   sudo apt install -y iptables iptables-persistent
 fi
