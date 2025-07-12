@@ -1,4 +1,10 @@
 #!/bin/bash
+echo "卸载 iptables"
+echo
+read -rp "确定要继续吗？(y/n): " confirm
+if [[ "$confirm" != "y" ]]; then
+    exit 0
+fi
 
 if ! grep -Ei 'debian|ubuntu' /etc/os-release > /dev/null; then
   echo "此脚本只适用于 Debian / Ubuntu 系统！"
