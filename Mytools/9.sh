@@ -1,4 +1,11 @@
 #!/bin/bash
+clear
+echo "卸载UFW"
+echo
+read -rp "确定要继续吗？(y/n): " confirm
+if [[ "$confirm" != "y" ]]; then
+    exit 0
+fi
 
 echo "停止 ufw 服务..."
 sudo systemctl stop ufw
