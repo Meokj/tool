@@ -10,6 +10,8 @@ while true; do
   echo "7. 安装Nginx"
   echo "8. 卸载Nginx"
   echo "9. 卸载UFW防火墙"
+  echo "10. 安装nftables防火墙"
+  echo "11. 卸载nftables防火墙"
   echo "=================="
   read -rp "请输入要执行的脚本编号（0退出）： " num
 
