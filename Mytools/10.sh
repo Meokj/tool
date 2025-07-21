@@ -1,6 +1,12 @@
 #!/bin/bash
+clear
+echo "安装nftables"
+echo
 
-set -e
+read -rp "确定要继续吗？(y/n): " confirm
+if [[ "$confirm" != "y" ]]; then
+    exit 0
+fi
 
 if [[ "$EUID" -ne 0 ]]; then
   echo "请使用 root 用户运行此脚本！"
@@ -55,7 +61,6 @@ table inet filter {
         # 放行常用端口
         tcp dport { $SSH_PORT, 80, 443, 53 } accept
         udp dport 53 accept
-
     }
 
     chain forward {
