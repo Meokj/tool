@@ -45,32 +45,34 @@ echo "=== 生成 nftables 配置文件 ==="
 cat > /etc/nftables.conf <<EOF
 #!/usr/sbin/nft -f
 
-flush ruleset
+flush ruleset  # 清空当前所有 nftables 规则，确保从零开始配置
 
 table inet filter {
     chain input {
         type filter hook input priority 0;
-        policy drop;
-
+        policy drop;  # 默认拒绝所有进来的数据包，保证安全性
+        
+        # 允许已经建立和相关的连接通过，避免断开已有连接
         ct state established,related accept
+        # 允许本地回环接口流量
         iif lo accept
-
-        # 放行 ICMP（仅IPv4 ）
+        # 放行 ICMP
         ip protocol icmp accept
+        ip6 nexthdr ipv6-icmp accept
 
-        # 放行常用端口
+        # 放行端口
         tcp dport { $SSH_PORT, 80, 443, 53 } accept
         udp dport 53 accept
     }
 
     chain forward {
         type filter hook forward priority 0;
-        policy drop;
+        policy drop;  # 默认拒绝所有转发的数据包，阻止路由转发
     }
 
     chain output {
         type filter hook output priority 0;
-        policy accept;
+        policy accept;  # 允许所有出站流量，不限制服务器向外的连接
     }
 }
 EOF
