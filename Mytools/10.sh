@@ -61,8 +61,7 @@ table inet filter {
         ip6 nexthdr ipv6-icmp accept
 
         # 放行端口
-        tcp dport { $SSH_PORT, 80, 443, 53 } accept
-        udp dport 53 accept
+        tcp dport { $SSH_PORT, 80, 443 } accept
     }
 
     chain forward {
