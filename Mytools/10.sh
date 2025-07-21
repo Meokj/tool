@@ -18,6 +18,11 @@ else
   exit 1
 fi
 
+if dpkg -l | grep -qw nftables; then
+  echo "nftables 已经安装，无需重复安装，脚本退出。"
+  exit 0
+fi
+
 echo "=== 更新软件包索引 ==="
 apt update
 
