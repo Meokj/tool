@@ -12,6 +12,7 @@ while true; do
   echo "9. 卸载UFW防火墙"
   echo "10. 安装nftables防火墙"
   echo "11. 卸载nftables防火墙"
+  echo "12. 自动设置ipv6优先访问"
   echo "=================="
   read -rp "请输入要执行的脚本编号（0退出）： " num
 
