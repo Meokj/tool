@@ -1,5 +1,5 @@
 #!/bin/bash
-
+echo
 IPV6_ADDR=$(ip -6 addr show scope global | grep -oP '(?<=inet6 ).*(?= scope global)' | awk '{print $1}')
 
 if [ -z "$IPV6_ADDR" ]; then
@@ -10,7 +10,7 @@ else
     echo "准备启用 IPv6 DNS + IPv6 优先访问..."
 fi
 
-echo "Backing up /etc/resolv.conf ..."
+echo "正在备份 /etc/resolv.conf ..."
 cp /etc/resolv.conf /etc/resolv.conf.bak.$(date +%s)
 
 cat > /etc/resolv.conf <<EOF
@@ -32,4 +32,6 @@ echo "precedence ::ffff:0:0/96  10" >> /etc/gai.conf
 
 echo "已更新 /etc/gai.conf（IPv6 访问优先）"
 
-echo "完成：IPv6 可用，已应用 IPv6 DNS + IPv6 优先访问策略"
+echo "IPv6 可用，已应用 IPv6 DNS + IPv6 优先访问策略"
+
+echo
