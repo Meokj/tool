@@ -1,5 +1,5 @@
 ```bash
-bash <(curl -s https://raw.githubusercontent.com/Meokj/tool/main/run.sh)
+bash <(curl -s https://raw.githubusercontent.com/Meokj/onekey-ops/main/run.sh)
 ```
 
 ---
