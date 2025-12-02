@@ -27,7 +27,7 @@ while true; do
     exit 0
   fi
 
-  url="https://raw.githubusercontent.com/meokj/tool/main/Mytools/${num}.sh"
+  url="https://raw.githubusercontent.com/meokj/onekey-ops/main/Mytools/${num}.sh"
   
   if curl --silent --head --fail "$url" > /dev/null; then
     bash <(curl -s "$url")
